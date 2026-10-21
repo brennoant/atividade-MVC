@@ -1,9 +1,6 @@
 package view;
 
-import java.util.List;
 import java.util.Scanner;
-
-import model.Produto;
 
 public class ProdutoView {
 
@@ -44,16 +41,16 @@ public class ProdutoView {
         System.out.printf("#%d | Produto: %s | Preço: R$ %.2f%n", id, nome, preco);
     }
 
-    public void exibirLista(List<Produto> produtos) {
+    public void exibirCabecalhoLista() {
         System.out.println("----- PRODUTOS CADASTRADOS -----");
-        if (produtos.isEmpty()) {
-            System.out.println("Nenhum produto cadastrado.");
-            return;
-        }
-        for (Produto p : produtos) {
-            exibirProduto(p.getId(), p.getNome(), p.getPreco());
-        }
-        System.out.println("Total: " + produtos.size() + " produto(s).");
+    }
+
+    public void exibirListaVazia() {
+        System.out.println("Nenhum produto cadastrado.");
+    }
+
+    public void exibirTotal(int total) {
+        System.out.println("Total: " + total + " produto(s).");
     }
 
     public void exibirMensagem(String mensagem) {

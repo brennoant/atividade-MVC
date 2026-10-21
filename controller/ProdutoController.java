@@ -1,5 +1,7 @@
 package controller;
 
+import java.util.List;
+
 import model.Produto;
 import view.ProdutoView;
 
@@ -36,6 +38,15 @@ public class ProdutoController {
     }
 
     public void listar() {
-        view.exibirLista(Produto.listarTodos());
+        List<Produto> produtos = Produto.listarTodos();
+        view.exibirCabecalhoLista();
+        if (produtos.isEmpty()) {
+            view.exibirListaVazia();
+            return;
+        }
+        for (Produto p : produtos) {
+            view.exibirProduto(p.getId(), p.getNome(), p.getPreco());
+        }
+        view.exibirTotal(produtos.size());
     }
 }
